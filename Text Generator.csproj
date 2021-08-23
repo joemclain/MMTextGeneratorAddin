@@ -1,0 +1,167 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+    <TargetFramework>net472</TargetFramework>
+    <UseWPF>true</UseWPF>
+
+    <!--<TargetFrameworks>netcoreapp3.0;net472</TargetFrameworks>-->
+    <OutDir>$(appdata)\Markdown Monster\Addins\Text Generator</OutDir>
+    <AssemblyName>TextGeneratorAddin</AssemblyName>
+    <RootNamespace>TextGenerator</RootNamespace>
+
+		<localappdata>c:\users\joemc\appdata\local</localappdata>
+
+  </PropertyGroup>
+
+  <!--
+	<ItemGroup>
+    <ProjectReference Include="..\MarkdownMonsterCode\MarkdownMonster\MarkdownMonster.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+  </ItemGroup>
+-->
+
+  <ItemGroup>
+    <Reference Include="Lorem-Ipsum">
+      <HintPath>..\..\sharp_Lorem Ipsum\Lorem Ipsum\bin\net-debug\net461\Lorem-Ipsum.dll</HintPath>
+    </Reference>
+    <Reference Include="MarkdownMonster">
+      <HintPath>..\MarkdownMonsterCode\MarkdownMonster\bin\Debug\net472\win-x64\MarkdownMonster.exe</HintPath>
+    </Reference>
+    <Reference Include="Sharp-Random">
+      <HintPath>..\..\sharp_Lorem Ipsum\Lorem Ipsum\bin\net-debug\net461\Sharp-Random.dll</HintPath>
+    </Reference>
+		<!--
+    <Reference Include="System">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>false</Private>
+    </Reference>        
+    <Reference Include="System.Data">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Xaml">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <Private>false</Private>
+    </Reference>
+    -->
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net472'">
+    <Reference Include="$(localappdata)\Markdown Monster\MahApps.Metro.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="$(localappdata)\Markdown Monster\FontAwesome.WPF.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="$(localappdata)\Markdown Monster\Westwind.Utilities.dll">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="version.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net472'">
+    <DefineConstants>NETFULL</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>    
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Program</StartAction>
+		<DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
+    <StartProgram>$(localappdata)\Markdown Monster\MarkdownMonster.exe</StartProgram>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Update="System.Drawing">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Update="System.IO.Compression.FileSystem">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Update="System.Numerics">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Update="System.Runtime.Serialization">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Update="System.Windows.Controls.Ribbon">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Update="System.Xml">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Update="System.Xml.Linq">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Update="UIAutomationClient">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Update="UIAutomationClientSideProviders">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Update="UIAutomationProvider">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Update="UIAutomationTypes">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>

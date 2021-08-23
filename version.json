@@ -1,0 +1,11 @@
+﻿{
+  "id": "Text Generator",
+  "name": "Text Generators",
+  "summary": "Random Text Generator",
+  "description": "Random Text Generator (Lorem Ipsum)",
+  "version": "0.01",
+  "minVersion": "1.28",
+  "maxVersion": "2.99",
+  "author": "© 2021 Joe McLain, Digital Writing",
+  "updated": "2020-10-01T12:00:00Z"
+}

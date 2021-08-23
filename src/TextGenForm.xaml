@@ -1,0 +1,82 @@
+﻿<controls:MetroWindow
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:MarkdownMonster;assembly=MarkdownMonster"
+	xmlns:windows="clr-namespace:MarkdownMonster.Windows;assembly=MarkdownMonster"
+        
+	xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+	xmlns:fa="http://schemas.fontawesome.io/icons/"
+	xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+	xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+
+	xmlns:TextGenerator="clr-namespace:TextGenerator" 
+	x:Class="TextGenerator.Forms.TextGenForm"
+
+	mc:Ignorable="d"        
+	Icon="..\icon.png"
+	Title="Lorem Ipsum" 
+	TitleCharacterCasing="Normal" 
+	TitleBarHeight="20"
+	WindowStyle="SingleBorderWindow"
+	ResizeMode="NoResize"                      
+	WindowStartupLocation="CenterOwner"
+	ShowInTaskbar="False"
+	IsMinButtonEnabled="False" 
+	IsMaxRestoreButtonEnabled="False" 
+	Width="400" Height="300" 
+	Closing="Form_Closing" 
+	Loaded="Form_Loaded"                       
+>
+	<!--
+		Width="800" Height="780" MinHeight="768" MinWidth="700"
+-->
+
+	<Grid>
+		<RadioButton x:Name="Words" GroupName= "InsertType" Checked="InsertTypeChecked" Content="Words" HorizontalAlignment="Left" Margin="72,73,0,0" VerticalAlignment="Top" Width="76" Height="22"/>
+		<RadioButton x:Name="Sentences" GroupName= "InsertType" Checked="InsertTypeChecked" Content="Sentences" HorizontalAlignment="Left" Margin="72,100,0,0" VerticalAlignment="Top" Width="159" Height="22"/>
+		<RadioButton x:Name="Paragraphs" GroupName= "InsertType" Checked="InsertTypeChecked" Content="Paragraphs" HorizontalAlignment="Left" Margin="72,127,0,0" VerticalAlignment="Top" Width="159" Height="22"/>
+
+		<CheckBox Content="Capitalize Words" 
+		          HorizontalAlignment="Left" 
+		          Margin="184,74,0,0" 
+		          VerticalAlignment="Top" 
+		          IsChecked="{Binding CapitalizeWords, Mode=TwoWay}"/>
+
+		<Label Content="Count" 
+		       HorizontalAlignment="Left" 
+		       Margin="72,168,0,0" 
+		       VerticalAlignment="Top"/>
+
+		<TextBox x:Name="TBCount"
+		         HorizontalAlignment="Left" 
+		         Height="28" 
+		         Margin="141,169,0,0" 
+		         TextWrapping="Wrap" 
+		         VerticalAlignment="Top" 
+		         Width="120" 
+		         TextChanged="TBCount_TextChanged" 
+		         Text="{Binding CountItems, Mode=TwoWay}" 
+		         LostFocus="TBCount_LostFocus" 
+		         KeyDown="TBCount_KeyDown"/>
+
+
+
+		<Button Content="Insert" 
+		        HorizontalAlignment="Left" 
+		        Margin="122,228,0,0" 
+		        VerticalAlignment="Top" 
+		        Width="75" 
+		        Click="InsertButton"/>
+
+		<Button Content="Insert And Close" 
+						HorizontalAlignment="Left" 
+						Margin="214,228,0,0" 
+						VerticalAlignment="Top" 
+						Width="132" 
+						Click="InsertAndClose"/>
+
+	</Grid>
+
+</controls:MetroWindow>
