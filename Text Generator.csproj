@@ -6,13 +6,33 @@
     <UseWPF>true</UseWPF>
 
     <!--<TargetFrameworks>netcoreapp3.0;net472</TargetFrameworks>-->
+
+    <!-- 
+    output to the roaming MarkdownMonster Addins directory which will
+    be picked up by any MM instance
+    -->
     <OutDir>$(appdata)\Markdown Monster\Addins\Text Generator</OutDir>
     <AssemblyName>TextGeneratorAddin</AssemblyName>
     <RootNamespace>TextGenerator</RootNamespace>
 
 		<localappdata>c:\users\joemc\appdata\local</localappdata>
+		<mm>D:\Work\2021 Forward\Sharp Feb 2021 Forward\Markdown Monster\MarkdownMonsterCode\MarkdownMonster</mm>
+
+		<!--mmOutputDir>$(mm)\bin\$(Configuration)\net472\win-x64</mmOutputDir -->
+
+    <!--
+    Condition=" '$(USERNAME)' == 'joemc' "
+    -->
+
+		<mmOutputDir>$(mm)\bin\Debug\net472\win-x64</mmOutputDir>
 
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Markdown Monster\MarkdownMonsterCode\MarkdownMonster\MarkdownMonster.csproj" />
+    <ProjectReference Include="..\sharp_Lorem Ipsum\Lorem Ipsum\Lorem Ipsum.csproj" />
+    <ProjectReference Include="..\sharp_random\random\sharp_random.csproj" />
+  </ItemGroup>
 
   <!--
 	<ItemGroup>
@@ -22,55 +42,14 @@
   </ItemGroup>
 -->
 
-  <ItemGroup>
-    <Reference Include="Lorem-Ipsum">
-      <HintPath>..\..\sharp_Lorem Ipsum\Lorem Ipsum\bin\net-debug\net461\Lorem-Ipsum.dll</HintPath>
-    </Reference>
-    <Reference Include="MarkdownMonster">
-      <HintPath>..\MarkdownMonsterCode\MarkdownMonster\bin\Debug\net472\win-x64\MarkdownMonster.exe</HintPath>
-    </Reference>
-    <Reference Include="Sharp-Random">
-      <HintPath>..\..\sharp_Lorem Ipsum\Lorem Ipsum\bin\net-debug\net461\Sharp-Random.dll</HintPath>
-    </Reference>
-		<!--
-    <Reference Include="System">
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="System.Core">
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="Microsoft.CSharp">
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="System.Windows.Forms">
-      <Private>false</Private>
-    </Reference>        
-    <Reference Include="System.Data">
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="System.Xaml">
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="PresentationCore">
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="PresentationFramework">
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="WindowsBase">
-      <Private>false</Private>
-    </Reference>
-    -->
-  </ItemGroup>
-
   <ItemGroup Condition=" '$(TargetFramework)' == 'net472'">
-    <Reference Include="$(localappdata)\Markdown Monster\MahApps.Metro.dll">
+    <Reference Include="$(mmOutputDir)\MahApps.Metro.dll">
       <Private>false</Private>
     </Reference>
-    <Reference Include="$(localappdata)\Markdown Monster\FontAwesome.WPF.dll">
+    <Reference Include="$(mmOutputDir)\FontAwesome.WPF.dll">
       <Private>false</Private>
     </Reference>
-    <Reference Include="$(localappdata)\Markdown Monster\Westwind.Utilities.dll">
+    <Reference Include="$(mmOutputDir)\Westwind.Utilities.dll">
       <Private>false</Private>
     </Reference>
   </ItemGroup>

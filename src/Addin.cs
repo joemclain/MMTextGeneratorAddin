@@ -41,6 +41,8 @@ namespace TextGenerator {
 
 	public class TextGeneratorAddin : MarkdownMonsterAddin {
 
+		public const string ADDIN_NAME = "Text Generator";
+
 		private AddinModel AddinModel { get; set; }
 
 
@@ -64,8 +66,16 @@ namespace TextGenerator {
 			await base.OnApplicationStart();
 
 			// ******
-			Id = "TextGenerator";
-			Name = "TextGenerator";
+			//
+			// Id must be the same as the name of the install directory in the
+			// MM addins directory or uninstall will not find the addin
+			//
+			Id = ADDIN_NAME;
+			//
+			// MM uses this to identify the addin for messages and logging purposes ,
+			// it is also used for the menu item Caption (below)
+			//
+			Name = ADDIN_NAME;
 
 			// ******
 			//
@@ -77,6 +87,10 @@ namespace TextGenerator {
 				// icon on toolbar
 				//
 				FontawesomeIcon = FontAwesomeIcon.Paw,
+				//
+				// we don't currently have any configuration
+				//
+				ExecuteConfiguration = null,
 
 #if DEBUG
 				//

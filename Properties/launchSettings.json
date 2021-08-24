@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Text Generator": {
+      "commandName": "Executable",
+      "executablePath": "D:\\Work\\2021 Forward\\Sharp Feb 2021 Forward\\Markdown Monster\\MarkdownMonsterCode\\MarkdownMonster\\bin\\Debug\\net472\\win-x64\\MarkdownMonster.exe"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+
+To get MarkdownMonster to build & copy any "builtin" addins to to debug folder
+------------------------------------------------------------------------------
+
+To get MarkdownMonster project to build any of it's addins, need to set them to BUILD in configuration manager
+
+
+
+To set our addins to debug
+--------------------------
+
+Set their output directory to the roaming->MarkdownMonster->Addins directory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+. . .
+
+
