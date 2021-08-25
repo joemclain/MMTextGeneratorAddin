@@ -17,6 +17,18 @@ Set their output directory to the roaming->MarkdownMonster->Addins directory
 
 
 
+powershell "$(ProjectDir)\build.ps1"
+
+
+
+control output folder and content
+
+https://weblog.west-wind.com/posts/2019/Apr/30/NET-Core-30-SDK-Projects-Controlling-Output-Folders-and-Content
+
+
+
+mmApp.
+		public string AddinRepositoryUrl { get; set; } = "https://raw.githubusercontent.com/RickStrahl/MarkdownMonsterAddinsRegistry/master/MarkdownMonsterAddinRegistry.json";
 
 
 

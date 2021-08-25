@@ -1,0 +1,433 @@
+﻿<Project >
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<!--Exec Command="tcc ver" /-->
+
+		<PropertyGroup>
+			<CopySrc>$(OutputPath)</CopySrc>
+			<CopyDest>c:\users\joemc\AppData\Roaming\Markdown Monster\Addins\TextGenerator</CopyDest>
+			<BuildDir>$(MSBuildProjectDirectory)\Build</BuildDir>
+		</PropertyGroup>
+
+		<ItemGroup>
+			<DestFilesToDelete Include="$(CopyDest)\*.*"/>
+			<BuildFilesToDelete Include="$(BuildDir)\*.*"/>
+			<FilesToCopy Include="$(CopySrc)version.json;$(CopySrc)Sharp-Random.dll;$(CopySrc)Lorem-Ipsum.dll;$(CopySrc)TextGeneratorAddin.dll"/>
+		</ItemGroup>
+
+		<Message Text="src directory  = $(CopySrc)" />
+		<Message Text="dest directory = $(CopyDest)" />
+		<Message Text="build directory = $(BuildDir)" />
+		<Message Text="dest files to delete  = @(DestFilesToDelete)" />
+		<Message Text="files to copy    = @(FilesToCopy)" />
+
+		<!--
+-->
+		<Delete Files="@(DestFilesToDelete)" />
+		<Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(CopyDest)" />
+
+		<Delete Files="@(BuildFilesToDelete)" />
+		<ZipDirectory SourceDirectory="$(CopyDest)" DestinationFile="$(BuildDir)\addin.zip" />
+		<Copy SourceFiles="version.json" DestinationFolder="$(BuildDir)" />
+		<Copy SourceFiles="icon.png" DestinationFolder="$(BuildDir)" />
+		<Copy SourceFiles="screenshot.png" DestinationFolder="$(BuildDir)" />
+
+		<!--
+-->
+
+	</Target>
+
+</Project>
+
+
+<!--
+
+IntermediateOutputPath = obj\net-debug\net461\
+OutputPath = bin\net-debug\net461\
+Configuration = net-debug
+
+ MSBuildProjectDirectory = D:\Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5
+ MSBuildProjectFullPath = D:\Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5\Nmp5.Core.csproj
+ MSBuildProjectName = Nmp5.Core
+
+ MSBuildToolsVersion = 15.0
+
+
+=======================================================
+.Net 461
+=======================================================
+
+MSBuild Reserved and well known properties
+
+ MSBuildBinPath = C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin
+ MSBuildExtensionsPath = C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild
+ MSBuildExtensionsPath32 = C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild
+ MSBuildExtensionsPath64 = C:\Program Files\MSBuild
+ MSBuildLastTaskResult = true
+ MSBuildNodeCount = 12
+ MSBuildProgramFiles32 = C:\Program Files (x86)
+ MSBuildProjectDefaultTargets = Build
+ MSBuildProjectDirectory = D:\Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5
+ MSBuildProjectDirectoryNoRoot = Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5
+ MSBuildProjectExtension = .csproj
+ MSBuildProjectFile = Nmp5.Core.csproj
+ MSBuildProjectFullPath = D:\Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5\Nmp5.Core.csproj
+ MSBuildProjectName = Nmp5.Core
+ MSBuildRuntimeType = Full
+ MSBuildStartupDirectory = C:\WINDOWS\System32
+ MSBuildThisFile = magic-post.props
+ MSBuildThisFileDirectory = D:\Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5\
+ MSBuildThisFileDirectoryNoRoot = Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5\
+ MSBuildThisFileExtension = .props
+ MSBuildThisFileFullPath = D:\Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5\magic-post.props
+ MSBuildThisFileName = magic-post
+ MSBuildToolsPath = C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin
+ MSBuildToolsVersion = 15.0
+
+ Common MSBuild Project properties
+
+ AdditionalLibPaths =
+ AddModules =
+ ALToolPath =
+ ApplicationIcon =
+ ApplicationManifest =
+ AssemblyOriginatorKeyFile =
+ AssemblySearchPaths = {CandidateAssemblyFiles};{HintPathFromItem};{TargetFrameworkDirectory};{RawFileName}
+ AssemblyName = Nmp5
+ BaseAddress =
+ BaseOutputPath = bin\
+ BaseIntermediateOutputPath = obj\
+ BuildInParallel = true
+ BuildProjectReferences = true
+ CleanFile = Nmp5.Core.csproj.FileListAbsolute.txt
+ CodePage =
+ CompilerResponseFile =
+ Configuration = net-debug
+ CscToolPath =
+ CustomBeforeMicrosoftCommonTargets = C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\v15.0\Custom.Before.Microsoft.Common.targets
+ DebugSymbols = false
+ DefineConstants = TRACE;DEBUG;NETFULL;NET_DEBUG;NET461
+ DefineDebug =
+ DefineTrace =
+ DebugType = portable
+ DelaySign =
+ Deterministic = true
+ DisabledWarnings =
+ DisableFastUpToDateCheck =
+ DocumentationFile =
+ ErrorReport = prompt
+ ExcludeDeploymentUrl =
+ FileAlignment = 512
+ FrameworkPathOverride = C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1
+ GenerateDocumentation =
+ IntermediateOutputPath = obj\net-debug\net461\
+ KeyContainerName =
+ KeyOriginatorFile =
+ NoWin32Manifest =
+ ModuleAssemblyName =
+ NoLogo = true
+ NoStdLib =
+ NoVBRuntimeReference =
+ NoWin32Manifest =
+ Optimize =
+ OptionCompare =
+ OptionExplicit =
+ OptionInfer =
+ OptionStrict =
+ OutputPath = bin\net-debug\net461\
+ OutputType = Library
+ OverwriteReadOnlyFiles = false
+ PdbFile =
+ Platform = AnyCPU
+ ProduceReferenceAssembly = false
+ RemoveIntegerChecks =
+ SGenUseProxyTypes = true
+ SGenToolPath =
+ StartupObject =
+ ProcessorArchitecture = msil
+ RootNamespace = Nmp
+ Satellite_AlgorithmId =
+ Satellite_BaseAddress =
+ Satellite_CompanyName =
+ Satellite_Configuration =
+ Satellite_Description =
+ Satellite_EvidenceFile =
+ Satellite_FileVersion =
+ Satellite_Flags =
+ Satellite_GenerateFullPaths =
+ Satellite_LinkResource =
+ Satellite_MainEntryPoint =
+ Satellite_ProductName =
+ Satellite_ProductVersion =
+ Satellite_TargetType =
+ Satellite_Title =
+ Satellite_Trademark =
+ Satellite_Version =
+ Satellite_Win32Icon =
+ Satellite_Win32Resource =
+ SubsystemVersion = 6.00
+ TargetCompactFramework =
+ TargetFrameworkVersion = v4.6.1
+ TreatWarningsAsErrors = false
+ UseHostCompilerIfAvailable = false
+ Utf8Output = true
+ VbcToolPath =
+ VbcVerbosity =
+ VisualStudioVersion = 15.0
+ WarningsAsErrors = NU1605
+ WarningsNotAsErrors =
+ Win32Manifest =
+ Win32Resource =
+
+
+=======================================================
+net core 2.0
+=======================================================
+
+MSBuild Reserved and well known properties
+
+ MSBuildBinPath = C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin
+ MSBuildExtensionsPath = C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild
+ MSBuildExtensionsPath32 = C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild
+ MSBuildExtensionsPath64 = C:\Program Files\MSBuild
+ MSBuildLastTaskResult = true
+ MSBuildNodeCount = 12
+ MSBuildProgramFiles32 = C:\Program Files (x86)
+ MSBuildProjectDefaultTargets = Build
+ MSBuildProjectDirectory = D:\Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5
+ MSBuildProjectDirectoryNoRoot = Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5
+ MSBuildProjectExtension = .csproj
+ MSBuildProjectFile = Nmp5.Core.csproj
+ MSBuildProjectFullPath = D:\Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5\Nmp5.Core.csproj
+ MSBuildProjectName = Nmp5.Core
+ MSBuildRuntimeType = Full
+ MSBuildStartupDirectory = C:\WINDOWS\System32
+ MSBuildThisFile = magic-post.props
+ MSBuildThisFileDirectory = D:\Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5\
+ MSBuildThisFileDirectoryNoRoot = Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5\
+ MSBuildThisFileExtension = .props
+ MSBuildThisFileFullPath = D:\Work\2017 Forward\Sharp\Core\Sharp-Nmp\Nmp5\magic-post.props
+ MSBuildThisFileName = magic-post
+ MSBuildToolsPath = C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\15.0\Bin
+ MSBuildToolsVersion = 15.0
+
+ Common MSBuild Project properties
+
+ AdditionalLibPaths =
+ AddModules =
+ ALToolPath =
+ ApplicationIcon =
+ ApplicationManifest =
+ AssemblyOriginatorKeyFile =
+ AssemblySearchPaths = {CandidateAssemblyFiles};{HintPathFromItem};{TargetFrameworkDirectory};{RawFileName}
+ AssemblyName = Nmp5
+ BaseAddress =
+ BaseOutputPath = bin\
+ BaseIntermediateOutputPath = obj\
+ BuildInParallel = true
+ BuildProjectReferences = true
+ CleanFile = Nmp5.Core.csproj.FileListAbsolute.txt
+ CodePage =
+ CompilerResponseFile =
+ Configuration = core-debug
+ CscToolPath =
+ CustomBeforeMicrosoftCommonTargets = C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\MSBuild\v15.0\Custom.Before.Microsoft.Common.targets
+ DebugSymbols = false
+ DefineConstants = TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;CORE_DEBUG;NETSTANDARD2_0
+ DefineDebug =
+ DefineTrace =
+ DebugType = portable
+ DelaySign =
+ Deterministic = true
+ DisabledWarnings =
+ DisableFastUpToDateCheck =
+ DocumentationFile =
+ ErrorReport = prompt
+ ExcludeDeploymentUrl =
+ FileAlignment = 512
+ FrameworkPathOverride =
+ GenerateDocumentation =
+ IntermediateOutputPath = obj\core-debug\netstandard2.0\
+ KeyContainerName =
+ KeyOriginatorFile =
+ NoWin32Manifest =
+ ModuleAssemblyName =
+ NoLogo = true
+ NoStdLib = true
+ NoVBRuntimeReference =
+ NoWin32Manifest =
+ Optimize =
+ OptionCompare =
+ OptionExplicit =
+ OptionInfer =
+ OptionStrict =
+ OutputPath = bin\core-debug\netstandard2.0\
+ OutputType = Exe
+ OverwriteReadOnlyFiles = false
+ PdbFile =
+ Platform = AnyCPU
+ ProduceReferenceAssembly = false
+ RemoveIntegerChecks =
+ SGenUseProxyTypes = true
+ SGenToolPath =
+ StartupObject = Program.Program
+ ProcessorArchitecture = msil
+ RootNamespace = Nmp
+ Satellite_AlgorithmId =
+ Satellite_BaseAddress =
+ Satellite_CompanyName =
+ Satellite_Configuration =
+ Satellite_Description =
+ Satellite_EvidenceFile =
+ Satellite_FileVersion =
+ Satellite_Flags =
+ Satellite_GenerateFullPaths =
+ Satellite_LinkResource =
+ Satellite_MainEntryPoint =
+ Satellite_ProductName =
+ Satellite_ProductVersion =
+ Satellite_TargetType =
+ Satellite_Title =
+ Satellite_Trademark =
+ Satellite_Version =
+ Satellite_Win32Icon =
+ Satellite_Win32Resource =
+ SubsystemVersion =
+ TargetCompactFramework =
+ TargetFrameworkVersion = v2.0
+ TreatWarningsAsErrors = false
+ UseHostCompilerIfAvailable = false
+ Utf8Output = true
+ VbcToolPath =
+ VbcVerbosity =
+ VisualStudioVersion = 15.0
+ WarningsAsErrors = NU1605
+ WarningsNotAsErrors =
+ Win32Manifest =
+ Win32Resource =
+ 
+ 
+ 
+ 
+ 		<Message Text="MSBuildBinPath = $(MSBuildBinPath)" />
+		<Message Text="MSBuildExtensionsPath = $(MSBuildExtensionsPath)" />
+		<Message Text="MSBuildExtensionsPath32 = $(MSBuildExtensionsPath32)" />
+		<Message Text="MSBuildExtensionsPath64 = $(MSBuildExtensionsPath64)" />
+		<Message Text="MSBuildLastTaskResult = $(MSBuildLastTaskResult)" />
+		<Message Text="MSBuildNodeCount = $(MSBuildNodeCount)" />
+		<Message Text="MSBuildProgramFiles32 = $(MSBuildProgramFiles32)" />
+		<Message Text="MSBuildProjectDefaultTargets = $(MSBuildProjectDefaultTargets)" />
+		<Message Text="MSBuildProjectDirectory = $(MSBuildProjectDirectory)" />
+		<Message Text="MSBuildProjectDirectoryNoRoot = $(MSBuildProjectDirectoryNoRoot)" />
+		<Message Text="MSBuildProjectExtension = $(MSBuildProjectExtension)" />
+		<Message Text="MSBuildProjectFile = $(MSBuildProjectFile)" />
+		<Message Text="MSBuildProjectFullPath = $(MSBuildProjectFullPath)" />
+		<Message Text="MSBuildProjectName = $(MSBuildProjectName)" />
+		<Message Text="MSBuildRuntimeType = $(MSBuildRuntimeType)" />
+		<Message Text="MSBuildStartupDirectory = $(MSBuildStartupDirectory)" />
+		<Message Text="MSBuildThisFile = $(MSBuildThisFile)" />
+		<Message Text="MSBuildThisFileDirectory = $(MSBuildThisFileDirectory)" />
+		<Message Text="MSBuildThisFileDirectoryNoRoot = $(MSBuildThisFileDirectoryNoRoot)" />
+		<Message Text="MSBuildThisFileExtension = $(MSBuildThisFileExtension)" />
+		<Message Text="MSBuildThisFileFullPath = $(MSBuildThisFileFullPath)" />
+		<Message Text="MSBuildThisFileName = $(MSBuildThisFileName)" />
+		<Message Text="MSBuildToolsPath = $(MSBuildToolsPath)" />
+		<Message Text="MSBuildToolsVersion = $(MSBuildToolsVersion)" />
+
+		<Message Text="AdditionalLibPaths = $(AdditionalLibPaths)" />
+		<Message Text="AddModules = $(AddModules)" />
+		<Message Text="ALToolPath = $(ALToolPath)" />
+		<Message Text="ApplicationIcon = $(ApplicationIcon)" />
+		<Message Text="ApplicationManifest = $(ApplicationManifest)" />
+		<Message Text="AssemblyOriginatorKeyFile = $(AssemblyOriginatorKeyFile)" />
+		<Message Text="AssemblySearchPaths = $(AssemblySearchPaths)" />
+		<Message Text="AssemblyName = $(AssemblyName)" />
+		<Message Text="BaseAddress = $(BaseAddress)" />
+		<Message Text="BaseOutputPath = $(BaseOutputPath)" />
+		<Message Text="BaseIntermediateOutputPath = $(BaseIntermediateOutputPath)" />
+		<Message Text="BuildInParallel = $(BuildInParallel)" />
+		<Message Text="BuildProjectReferences = $(BuildProjectReferences)" />
+		<Message Text="CleanFile = $(CleanFile)" />
+		<Message Text="CodePage = $(CodePage)" />
+		<Message Text="CompilerResponseFile = $(CompilerResponseFile)" />
+		<Message Text="Configuration = $(Configuration)" />
+		<Message Text="CscToolPath = $(CscToolPath)" />
+		<Message Text="CustomBeforeMicrosoftCommonTargets = $(CustomBeforeMicrosoftCommonTargets)" />
+		<Message Text="DebugSymbols = $(DebugSymbols)" />
+		<Message Text="DefineConstants = $(DefineConstants)" />
+		<Message Text="DefineDebug = $(DefineDebug)" />
+		<Message Text="DefineTrace = $(DefineTrace)" />
+		<Message Text="DebugType = $(DebugType)" />
+		<Message Text="DelaySign = $(DelaySign)" />
+		<Message Text="Deterministic = $(Deterministic)" />
+		<Message Text="DisabledWarnings = $(DisabledWarnings)" />
+		<Message Text="DisableFastUpToDateCheck = $(DisableFastUpToDateCheck)" />
+		<Message Text="DocumentationFile = $(DocumentationFile)" />
+		<Message Text="ErrorReport = $(ErrorReport)" />
+		<Message Text="ExcludeDeploymentUrl = $(ExcludeDeploymentUrl)" />
+		<Message Text="FileAlignment = $(FileAlignment)" />
+		<Message Text="FrameworkPathOverride = $(FrameworkPathOverride)" />
+		<Message Text="GenerateDocumentation = $(GenerateDocumentation)" />
+		<Message Text="IntermediateOutputPath = $(IntermediateOutputPath)" />
+		<Message Text="KeyContainerName = $(KeyContainerName)" />
+		<Message Text="KeyOriginatorFile = $(KeyOriginatorFile)" />
+		<Message Text="NoWin32Manifest = $(NoWin32Manifest)" />
+		<Message Text="ModuleAssemblyName = $(ModuleAssemblyName)" />
+		<Message Text="NoLogo = $(NoLogo)" />
+		<Message Text="NoStdLib = $(NoStdLib)" />
+		<Message Text="NoVBRuntimeReference = $(NoVBRuntimeReference)" />
+		<Message Text="NoWin32Manifest = $(NoWin32Manifest)" />
+		<Message Text="Optimize = $(Optimize)" />
+		<Message Text="OptionCompare = $(OptionCompare)" />
+		<Message Text="OptionExplicit = $(OptionExplicit)" />
+		<Message Text="OptionInfer = $(OptionInfer)" />
+		<Message Text="OptionStrict = $(OptionStrict)" />
+		<Message Text="OutputPath = $(OutputPath)" />
+		<Message Text="OutputType = $(OutputType)" />
+		<Message Text="OverwriteReadOnlyFiles = $(OverwriteReadOnlyFiles)" />
+		<Message Text="PdbFile = $(PdbFile)" />
+		<Message Text="Platform = $(Platform)" />
+		<Message Text="ProduceReferenceAssembly = $(ProduceReferenceAssembly)" />
+		<Message Text="RemoveIntegerChecks = $(RemoveIntegerChecks)" />
+		<Message Text="SGenUseProxyTypes = $(SGenUseProxyTypes)" />
+		<Message Text="SGenToolPath = $(SGenToolPath)" />
+		<Message Text="StartupObject = $(StartupObject)" />
+		<Message Text="ProcessorArchitecture = $(ProcessorArchitecture)" />
+		<Message Text="RootNamespace = $(RootNamespace)" />
+		<Message Text="Satellite_AlgorithmId = $(Satellite_AlgorithmId)" />
+		<Message Text="Satellite_BaseAddress = $(Satellite_BaseAddress)" />
+		<Message Text="Satellite_CompanyName = $(Satellite_CompanyName)" />
+		<Message Text="Satellite_Configuration = $(Satellite_Configuration)" />
+		<Message Text="Satellite_Description = $(Satellite_Description)" />
+		<Message Text="Satellite_EvidenceFile = $(Satellite_EvidenceFile)" />
+		<Message Text="Satellite_FileVersion = $(Satellite_FileVersion)" />
+		<Message Text="Satellite_Flags = $(Satellite_Flags)" />
+		<Message Text="Satellite_GenerateFullPaths = $(Satellite_GenerateFullPaths)" />
+		<Message Text="Satellite_LinkResource = $(Satellite_LinkResource)" />
+		<Message Text="Satellite_MainEntryPoint = $(Satellite_MainEntryPoint)" />
+		<Message Text="Satellite_ProductName = $(Satellite_ProductName)" />
+		<Message Text="Satellite_ProductVersion = $(Satellite_ProductVersion)" />
+		<Message Text="Satellite_TargetType = $(Satellite_TargetType)" />
+		<Message Text="Satellite_Title = $(Satellite_Title)" />
+		<Message Text="Satellite_Trademark = $(Satellite_Trademark)" />
+		<Message Text="Satellite_Version = $(Satellite_Version)" />
+		<Message Text="Satellite_Win32Icon = $(Satellite_Win32Icon)" />
+		<Message Text="Satellite_Win32Resource = $(Satellite_Win32Resource)" />
+		<Message Text="SubsystemVersion = $(SubsystemVersion)" />
+		<Message Text="TargetCompactFramework = $(TargetCompactFramework)" />
+		<Message Text="TargetFrameworkVersion = $(TargetFrameworkVersion)" />
+		<Message Text="TreatWarningsAsErrors = $(TreatWarningsAsErrors)" />
+		<Message Text="UseHostCompilerIfAvailable = $(UseHostCompilerIfAvailable)" />
+		<Message Text="Utf8Output = $(Utf8Output)" />
+		<Message Text="VbcToolPath = $(VbcToolPath)" />
+		<Message Text="VbcVerbosity = $(VbcVerbosity)" />
+		<Message Text="VisualStudioVersion = $(VisualStudioVersion)" />
+		<Message Text="WarningsAsErrors = $(WarningsAsErrors)" />
+		<Message Text="WarningsNotAsErrors = $(WarningsNotAsErrors)" />
+		<Message Text="Win32Manifest = $(Win32Manifest)" />
+		<Message Text="Win32Resource = $(Win32Resource)" />
+-->
+
+
+
+

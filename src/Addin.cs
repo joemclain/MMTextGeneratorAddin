@@ -41,6 +41,7 @@ namespace TextGenerator {
 
 	public class TextGeneratorAddin : MarkdownMonsterAddin {
 
+		public const string ADDIN_ID = "TextGenerator";
 		public const string ADDIN_NAME = "Text Generator";
 
 		private AddinModel AddinModel { get; set; }
@@ -70,7 +71,7 @@ namespace TextGenerator {
 			// Id must be the same as the name of the install directory in the
 			// MM addins directory or uninstall will not find the addin
 			//
-			Id = ADDIN_NAME;
+			Id = ADDIN_ID;
 			//
 			// MM uses this to identify the addin for messages and logging purposes ,
 			// it is also used for the menu item Caption (below)
