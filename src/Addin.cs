@@ -114,6 +114,14 @@ namespace TextGenerator {
 
 
 		/////////////////////////////////////////////////////////////////////////////
+
+		private void CreateAddinModel(AppModel model)
+		{
+			AddinModel = new AddinModel( model, this );
+		}
+
+
+		/////////////////////////////////////////////////////////////////////////////
 		/// <summary>
 		/// Fired after the model has been loaded. If you need model access during loading
 		/// this is the place to hook up your code.
@@ -123,8 +131,8 @@ namespace TextGenerator {
 		public override Task OnModelLoaded( AppModel model )
 		{
 			// ******
-			this.Model = model;
-			AddinModel = new AddinModel( model, this );
+			////this.Model = model;
+			//AddinModel = new AddinModel( model, this );
 
 			// ******
 			return Task.CompletedTask;
@@ -180,6 +188,10 @@ namespace TextGenerator {
 		public override async Task OnExecute( object sender )
 		{
 			// ******
+			if( null == AddinModel ) {
+				CreateAddinModel( Model );
+			}
+
 			if( null != AddinModel.Form ) {
 				AddinModel.Form.Topmost = true;
 				AddinModel.Form.Focus();
