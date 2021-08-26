@@ -56,7 +56,7 @@ namespace TextGenerator {
 
 		public override bool OnCanExecute( object sender )
 		{
-			return true;
+			return null != ActiveEditor;
 		}
 
 		/////////////////////////////////////////////////////////////////////////////
