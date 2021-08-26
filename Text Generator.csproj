@@ -1,159 +1,157 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
-  <PropertyGroup>
-    <Version>1.0.0</Version>
-    <TargetFramework>net472</TargetFramework>
-    <UseWPF>true</UseWPF>
+	<PropertyGroup>
+		<Version>1.0.0</Version>
+		<TargetFramework>net472</TargetFramework>
+		<UseWPF>true</UseWPF>
 
-    <!--<TargetFrameworks>netcoreapp3.0;net472</TargetFrameworks>-->
+		<!--<TargetFrameworks>netcoreapp3.0;net472</TargetFrameworks>-->
 
-    <!-- 
-    output to the roaming MarkdownMonster Addins directory which will
-    be picked up by any MM instance
-    -->
-		<!--OutDir>$(appdata)\Markdown Monster\Addins\TextGenerator</OutDir -->
+		<!-- output to the roaming MarkdownMonster Addins directory
 
-    <AssemblyName>TextGeneratorAddin</AssemblyName>
-    <RootNamespace>TextGenerator</RootNamespace>
+		<OutDir>$(appdata)\Markdown Monster\Addins\TextGenerator</OutDir>
+
+		-->
+
+		<AssemblyName>TextGeneratorAddin</AssemblyName>
+		<RootNamespace>TextGenerator</RootNamespace>
 
 		<localappdata>c:\users\joemc\appdata\local</localappdata>
-		
-    <mm>..\Markdown Monster\MarkdownMonsterCode\MarkdownMonster</mm>
 
-		<!--mmOutputDir>$(mm)\bin\$(Configuration)\net472\win-x64</mmOutputDir -->
+		<!-- MarkdownMonster project folder relative to us ONLY ON jpm's develop machine
+		-->
+		<mm>..\Markdown Monster\MarkdownMonsterCode\MarkdownMonster</mm>
 
-    <!--
+		<!-- mm debug output directory
+		-->
+		<mmOutputDir>$(mm)\bin\Debug\net472\win-x64</mmOutputDir>
+
+		<!--
     Condition=" '$(USERNAME)' == 'joemc' "
     -->
 
-		<mmOutputDir>$(mm)\bin\Debug\net472\win-x64</mmOutputDir>
+	</PropertyGroup>
 
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Markdown Monster\MarkdownMonsterCode\MarkdownMonster\MarkdownMonster.csproj">
-      <Private>true</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\sharp_Lorem Ipsum\Lorem Ipsum\Lorem Ipsum.csproj">
-      <Private>true</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\sharp_random\random\sharp_random.csproj">
-      <Private>true</Private>
-    </ProjectReference>
-  </ItemGroup>
-
-  <!--
 	<ItemGroup>
-    <ProjectReference Include="..\MarkdownMonsterCode\MarkdownMonster\MarkdownMonster.csproj">
-      <Private>false</Private>
-    </ProjectReference>
-  </ItemGroup>
--->
+		<ProjectReference Include="..\Markdown Monster\MarkdownMonsterCode\MarkdownMonster\MarkdownMonster.csproj">
+			<Private>true</Private>
+		</ProjectReference>
+		<ProjectReference Include="..\sharp_Lorem Ipsum\Lorem Ipsum\Lorem Ipsum.csproj">
+			<Private>true</Private>
+		</ProjectReference>
+		<ProjectReference Include="..\sharp_random\random\sharp_random.csproj">
+			<Private>true</Private>
+		</ProjectReference>
+	</ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net472'">
-    <Reference Include="$(mmOutputDir)\MahApps.Metro.dll">
-      <Private>false</Private>
-	    <IncludeAssets>compile</IncludeAssets>
-    </Reference>
-    <Reference Include="$(mmOutputDir)\FontAwesome.WPF.dll">
-      <Private>false</Private>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net472'">
+		<Reference Include="$(mmOutputDir)\MahApps.Metro.dll">
+			<Private>true</Private>
 			<IncludeAssets>compile</IncludeAssets>
 		</Reference>
-	  <Reference Include="$(mmOutputDir)\Westwind.Utilities.dll">
-      <Private>false</Private>
+		<Reference Include="$(mmOutputDir)\FontAwesome.WPF.dll">
+			<Private>true</Private>
 			<IncludeAssets>compile</IncludeAssets>
 		</Reference>
-  </ItemGroup>
+		<Reference Include="$(mmOutputDir)\Westwind.Utilities.dll">
+			<Private>true</Private>
+			<IncludeAssets>compile</IncludeAssets>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="icon.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="icon.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="version.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="version.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net472'">
-    <DefineConstants>NETFULL</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>embedded</DebugType>
-    <DebugSymbols>true</DebugSymbols>    
-  </PropertyGroup>
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net472'">
+		<DefineConstants>NETFULL</DefineConstants>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartAction>Program</StartAction>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>embedded</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+		<StartAction>Program</StartAction>
 		<DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
-    <StartProgram>$(localappdata)\Markdown Monster\MarkdownMonster.exe</StartProgram>
-  </PropertyGroup>
+		<StartProgram>$(localappdata)\Markdown Monster\MarkdownMonster.exe</StartProgram>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Reference Update="System.Drawing">
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Update="System.Drawing">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Update="System.IO.Compression.FileSystem">
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Update="System.IO.Compression.FileSystem">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Update="System.Numerics">
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Update="System.Numerics">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Update="System.Runtime.Serialization">
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Update="System.Runtime.Serialization">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Update="System.Windows.Controls.Ribbon">
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Update="System.Windows.Controls.Ribbon">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Update="System.Xml">
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Update="System.Xml">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Update="System.Xml.Linq">
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Update="System.Xml.Linq">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Update="UIAutomationClient">
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Update="UIAutomationClient">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Update="UIAutomationClientSideProviders">
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Update="UIAutomationClientSideProviders">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Update="UIAutomationProvider">
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Update="UIAutomationProvider">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Update="UIAutomationTypes">
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Update="UIAutomationTypes">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
 
-  <Import Project="magic-post.props" />
+	<!-- Copy files, and generate Build and Distribution folders (release only)
+  -->
+	<Import Project="magic-post.props" />
 </Project>

@@ -148,6 +148,21 @@ namespace TextGenerator.Forms {
 
 
 		/////////////////////////////////////////////////////////////////////////////
+		
+		private void Window_KeyDown( object sender, KeyEventArgs e )
+		{
+			if( Key.Escape == e.Key ) {
+				this.Close();
+			}
+			//else if( Key.Enter == e.Key ) {
+			//
+			//}
+
+		}
+
+
+
+		/////////////////////////////////////////////////////////////////////////////
 		/// <summary>
 		/// Text box value has changed - each time any change is made
 		/// </summary>
@@ -156,7 +171,6 @@ namespace TextGenerator.Forms {
 
 		private void TBCount_TextChanged( object sender, TextChangedEventArgs e )
 		{
-
 		}
 
 
@@ -172,6 +186,13 @@ namespace TextGenerator.Forms {
 		{
 			// ******
 			switch( e.Key ) {
+				case Key.Escape:
+				case Key.Enter:
+
+				case Key.Tab:
+				case Key.Left:
+				case Key.Right:
+
 				case Key.Back:
 				case Key.Delete:
 
@@ -291,9 +312,8 @@ namespace TextGenerator.Forms {
 			// show status message that goes away after 4 secs
 			_mmAddin.ShowStatus( "Inserted generated text...", 4000 );
 
-			// Set focus back to editor
-			await _mmAddin.SetEditorFocus();
 
+			Focus();
 
 
 			// ******
@@ -321,6 +341,8 @@ namespace TextGenerator.Forms {
 		private async void InsertAndClose( object sender, RoutedEventArgs e )
 		{
 			InsertButton( sender, e );
+			// Set focus back to editor
+			await _mmAddin.SetEditorFocus();
 			this.Close();
 		}
 

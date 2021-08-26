@@ -1,36 +1,70 @@
 ﻿<Project >
 
+
+	<!-- Copy files to the roaming MarkdownMonster addins folder
+	-->
+
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<!--Exec Command="tcc ver" /-->
 
 		<PropertyGroup>
 			<CopySrc>$(OutputPath)</CopySrc>
 			<CopyDest>c:\users\joemc\AppData\Roaming\Markdown Monster\Addins\TextGenerator</CopyDest>
-			<BuildDir>$(MSBuildProjectDirectory)\Build</BuildDir>
 		</PropertyGroup>
 
 		<ItemGroup>
 			<DestFilesToDelete Include="$(CopyDest)\*.*"/>
-			<BuildFilesToDelete Include="$(BuildDir)\*.*"/>
 			<FilesToCopy Include="$(CopySrc)version.json;$(CopySrc)Sharp-Random.dll;$(CopySrc)Lorem-Ipsum.dll;$(CopySrc)TextGeneratorAddin.dll"/>
 		</ItemGroup>
 
+		<Message Text=" ------------------------ " />
 		<Message Text="src directory  = $(CopySrc)" />
 		<Message Text="dest directory = $(CopyDest)" />
-		<Message Text="build directory = $(BuildDir)" />
 		<Message Text="dest files to delete  = @(DestFilesToDelete)" />
 		<Message Text="files to copy    = @(FilesToCopy)" />
+		<Message Text=" ------------------------ " />
 
-		<!--
+<!--
 -->
 		<Delete Files="@(DestFilesToDelete)" />
 		<Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(CopyDest)" />
 
+	</Target>
+
+
+	<!-- Generate the build and distribution folders for the release version
+	-->
+	
+	<Target Name="ExPostBuild" AfterTargets="PostBuild" Condition=" '$(Configuration)' == 'Release' ">
+
+		<Message Text=" ------------------------ " />
+		<Message Text=" ------------------------ " />
+		<Message Text=" *** ExPostBuild *** " />
+		<Message Text=" ------------------------ " />
+		<Message Text=" ------------------------ " />
+
+		<PropertyGroup>
+			<BuildDir>$(MSBuildProjectDirectory)\Build</BuildDir>
+		</PropertyGroup>
+
+		<ItemGroup>
+			<BuildFilesToDelete Include="$(BuildDir)/**/*.*"/>
+		</ItemGroup>
+
+	<Message Text=" ------------------------ " />
+		<Message Text="build directory       = $(BuildDir)" />
+		<Message Text="build files to delete = @(BuildFilesToDelete)" />
+		<Message Text="files to copy         = @(FilesToCopy)" />
+		<Message Text=" ------------------------ " />
+
 		<Delete Files="@(BuildFilesToDelete)" />
+
 		<ZipDirectory SourceDirectory="$(CopyDest)" DestinationFile="$(BuildDir)\addin.zip" />
 		<Copy SourceFiles="version.json" DestinationFolder="$(BuildDir)" />
 		<Copy SourceFiles="icon.png" DestinationFolder="$(BuildDir)" />
 		<Copy SourceFiles="screenshot.png" DestinationFolder="$(BuildDir)" />
+
+		<Copy SourceFiles="@(FilesToCopy)" DestinationFolder="$(BuildDir)\Distribution" />
 
 		<!--
 -->

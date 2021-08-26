@@ -27,7 +27,7 @@
 	IsMaxRestoreButtonEnabled="False" 
 	Width="400" Height="300" 
 	Closing="Form_Closing" 
-	Loaded="Form_Loaded"                       
+	Loaded="Form_Loaded" KeyDown="Window_KeyDown"                       
 >
 	<!--
 		Width="800" Height="780" MinHeight="768" MinWidth="700"
