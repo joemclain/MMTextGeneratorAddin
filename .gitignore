@@ -221,3 +221,5 @@ project.lock.json
 #
 *.png
 
+!Build
+!Build/*
