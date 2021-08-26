@@ -219,10 +219,11 @@ project.lock.json
 
 # no PNG files
 #
-*.png
+#!*.png
 
 !Build
-!Build/*
+!Build/**/*.*
 
-!icon.png
-!screenshot.png
+#!icon.png
+#!screenshot.png
+
