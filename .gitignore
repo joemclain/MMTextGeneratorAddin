@@ -223,3 +223,6 @@ project.lock.json
 
 !Build
 !Build/*
+
+!icon.png
+!screenshot.png

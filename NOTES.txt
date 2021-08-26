@@ -19,8 +19,8 @@ Copy them to the roaming->MarkdownMonster->Addins directory from the std output 
 The Build directory
 -------------------
 
-Replace build.ps1 with a msbuild after build target. It copies to the roaming addins directory
-and creates the Build directory when a release is built
+Replace build.ps1 with a msbuild after build target. It creates a zip file and copies all
+relevent files to their correct Build directory locations.
 
 
 
@@ -30,7 +30,7 @@ info on registering addin
 https://github.com/rickstrahl/markdownmonsteraddinsregistry
 
 
-control msbuild output folder and content
+Post by Rick, controling VS/MSBuild output folder and content
 ---------------------------------
 
 https://weblog.west-wind.com/posts/2019/Apr/30/NET-Core-30-SDK-Projects-Controlling-Output-Folders-and-Content
