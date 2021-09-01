@@ -4,15 +4,6 @@
 		<Version>1.0.0</Version>
 		<TargetFramework>net472</TargetFramework>
 		<UseWPF>true</UseWPF>
-
-		<!--<TargetFrameworks>netcoreapp3.0;net472</TargetFrameworks>-->
-
-		<!-- output to the roaming MarkdownMonster Addins directory
-
-		<OutDir>$(appdata)\Markdown Monster\Addins\TextGenerator</OutDir>
-
-		-->
-
 		<AssemblyName>TextGeneratorAddin</AssemblyName>
 		<RootNamespace>TextGenerator</RootNamespace>
 
@@ -20,7 +11,7 @@
 
 		<!-- MarkdownMonster project folder relative to us ONLY ON jpm's develop machine
 		-->
-		<mm>..\Markdown Monster\MarkdownMonsterCode\MarkdownMonster</mm>
+		<mm>..\..\Markdown Monster\MarkdownMonsterCode\MarkdownMonster</mm>
 
 		<!-- mm debug output directory
 		-->
@@ -29,17 +20,16 @@
 		<!--
     Condition=" '$(USERNAME)' == 'joemc' "
     -->
-
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Markdown Monster\MarkdownMonsterCode\MarkdownMonster\MarkdownMonster.csproj">
+		<ProjectReference Include="..\..\Markdown Monster\MarkdownMonsterCode\MarkdownMonster\MarkdownMonster.csproj">
 			<Private>true</Private>
 		</ProjectReference>
-		<ProjectReference Include="..\sharp_Lorem Ipsum\Lorem Ipsum\Lorem Ipsum.csproj">
+		<ProjectReference Include="..\..\sharp_Lorem Ipsum\Lorem Ipsum\Lorem Ipsum.csproj">
 			<Private>true</Private>
 		</ProjectReference>
-		<ProjectReference Include="..\sharp_random\random\sharp_random.csproj">
+		<ProjectReference Include="..\..\sharp_random\random\sharp_random.csproj">
 			<Private>true</Private>
 		</ProjectReference>
 	</ItemGroup>
