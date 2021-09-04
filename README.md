@@ -1,6 +1,7 @@
+![](icon.png)
 
+Text Generator is an addin for [MarkdownMonster](https://markdownmonster.west-wind.com/) which generates random text using an implementation of Lorem Ipsum. You can read about Lorem Ipsum [here](https://lipsum.com/). Note, the text generator and the one at lipsum.com are different implementations, the author is not associated with lipsum.com in any way.
 
+Text Generator makes use of two libraries: "sharp-random" and "Lorem-Ipsum". These are open source but have not been made public due to the lack of any documentation, and other nastyness.
 
-Text Generator is a random text generator using Lorem Ipsum text. To read about Lorem Ipsum check out [this](https://lipsum.com/). Note, the text generator and the one at lipsum.com are totally different implementations. 
-
-Text Generator makes use of two libraries: sharp-random and "Lorem-Ipsum". These libraries are open source but have not been made public, they will once their packages have been uploaded to nuget.org.
+![](screenshot.png)

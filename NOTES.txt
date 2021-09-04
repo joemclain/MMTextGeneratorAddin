@@ -35,14 +35,14 @@ Post by Rick, controling VS/MSBuild output folder and content
 
 https://weblog.west-wind.com/posts/2019/Apr/30/NET-Core-30-SDK-Projects-Controlling-Output-Folders-and-Content
 
-Whole things is a pain the ass so we just copy the required files from the output directory to wherever
-they need to go (roaming addins & Build directory)
+Visual studio output file management is a pain in the ass so we just copy the required files from 
+the output directory to wherever they need to go (roaming addins & Build directory)
 
 
 MM's address for the addin repository on GitHub
 -----------------------------------------------
 
-mmApp.
+mmApp.AddinRepositoryUrl
 
 public string AddinRepositoryUrl { get; set; } = "https://raw.githubusercontent.com/RickStrahl/MarkdownMonsterAddinsRegistry/master/MarkdownMonsterAddinRegistry.json";
 
