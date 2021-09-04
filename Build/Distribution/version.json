@@ -1,7 +1,7 @@
 ﻿{
   "id": "TextGenerator",
   "name": "Text Generators",
-  "summary": "Generate random text to be inserted in the current document using an implementation of Lorem Ipsum.",
+  "summary": "Generate random text to be inserted in the current document using an implementation of Lorem Ipsum. Requires MarkdownMonster version 2.",
   "description": "Random Text Generator (Lorem Ipsum)",
   "version": "0.01",
   "minVersion": "2.00",
